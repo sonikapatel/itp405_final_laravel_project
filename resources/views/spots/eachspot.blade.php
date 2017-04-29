@@ -14,15 +14,10 @@
 
 }
 a:link {
-    color: #edd0cd;;
     text-decoration: none;
 }
 a:visited {
     color: white;
-    text-decoration: none;
-}
-a:hover {
-    color: #edd0cd;
     text-decoration: none;
 }
 .modal {
@@ -47,6 +42,17 @@ a:hover {
     border: 1px solid #888;
     width: 80%;
 }
+.alert {
+padding: 8px 35px 8px 14px;
+margin-bottom: 18px;
+color: #A94442;
+text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+background-color: #F2DEDE;
+border: 1px solid #fbeed5;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+}
 .w3-btn,.w3-button{border:none;display:inline-block;outline:0;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap}
 
 .w3-modal{z-index:3;display:none;padding-top:100px;position:fixed;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgb(0,0,0);background-color:rgba(0,0,0,0.4)}
@@ -64,10 +70,16 @@ a:hover {
 <body style="background: -webkit-linear-gradient(#D96E88, #423853); color:white;font-family:Roboto;">
 
 @include('navigation')
+<br>
+@if (session('failedReview'))
+          <div class="alert alert-danger" role="alert" >
+            {{  session('failedReview') }}
+          </div>
+        @endif
     <div style="width:60%; margin:auto; padding:70px; ">
       <img style="float:right;width:340px" src='{{ $spot->imageURL }}'>
 
-  <p style="font-size:40px;">{{ $spot->spotName }}
+  <p style="font-size:30px;color:#edd0cd;">{{ $spot->spotName }}
     @if ($spot->Wifi ===1)
     <img style="width:20px" src="https://maxcdn.icons8.com/Share/icon/Network//wifi1600.png">
     @endif
@@ -75,7 +87,7 @@ a:hover {
     <img style="width:20px" src="https://d30y9cdsu7xlg0.cloudfront.net/png/945-200.png">
     @endif
   </p>
-  <p style="font-size:15px;margin-top:-37px;">  &nbsp{{ $spot->SpotType->spotType }}</p>
+  <p style="font-size:15px;margin-top:-20px;">  &nbsp{{ $spot->SpotType->spotType }}</p>
   <p style="font-size:14px;"><img style="width:15px" src='https://www.rawfoodmagazine.com/wp-content/uploads/2016/04/clock-icon-white.gif'>  {{$spot->StartTime->startingTime}} to {{ $spot->ClosingTime->closingTime }}</p>
 
   <p id="address" value="{{$spot->Address}} "style="font-size:14px;"><img src="http://www.gracefwbc.com/hp_wordpress/wp-content/uploads/2016/05/Location-Icon-White.png" style="width:18px;">{{ $spot->Address }}</p>
@@ -86,7 +98,7 @@ var hello = $('#address').text();
 var link = burl+hello;
 </script>
 <script>
-document.write('<a href="' + link + '">Get Directions</a>');
+document.write('<a style="color:  #F0BAB5;"href="' + link + '">Get Directions</a>');
 </script>
 <br>
 <br>
@@ -135,7 +147,6 @@ No reviews listed yet!
     </div>
   </div>
 </div>
-      <script>
       <script>
       $(document).ready(function(){
           $("#writeReview").click(function(){

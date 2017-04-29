@@ -48,9 +48,7 @@ class SpotController extends Controller
 public function destroy($id)
     {
       $favorite =Favorite::where('favorites.id',$id)->first();
-        // DB::table('tweets')
-        //     ->where('id', '=', $songID)
-        //     ->delete();
+
         if ($favorite != null){
           $favorite->delete();
             return redirect()->back()
@@ -95,8 +93,11 @@ public function destroy($id)
         $query = $query->whereIn('spot_type_id',[$coffeeshop, $rooftop,$hotel, $park, $library, $outsidepatio, $study]);
 
         }
-        if ($closingTime =="9 PM"){
+        if ($closingTime =="8 PM"){
           $query = $query->where('closing_time_id','>=','1');
+        }
+        if ($closingTime =="9 PM"){
+          $query = $query->where('closing_time_id','>','1');
         }
         if ($closingTime =="10 PM"){
           $query = $query->where('closing_time_id','>','2');
@@ -182,10 +183,10 @@ public function destroy($id)
   public function store(Request $request)
     {
 
-
-            // DB::table('tweets')->insert([
-            //     'tweet' => request('tweet')
-            // ]);
+      $validator = Validator::make($request->all(),[
+        'review' => 'required'
+    ]);
+if($validator->passes()){
             $theID = request('spot_id');
             $review = new Review();
             $review->review = request('review');
@@ -193,6 +194,10 @@ public function destroy($id)
             $review->save();
            return redirect()->back();
 
+}else{
+  return redirect()->back()
+  ->with('failedReview','Please enter a review.');
+}
 
 
     }
