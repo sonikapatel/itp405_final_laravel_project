@@ -17,7 +17,7 @@
   <div style="width:35%; margin:auto; margin-top:100px; padding:30px;">
   <p style="font-size:40px;">About</p>
   <p style="font-family: 'Megrim', cursive; color:white; font-size:60px;margin-top:-50px;"> Study Spot </p>
-  <div style="margin-top:-40px; font-family:Roboto-Light"> Ever feel tired of studying in the same old spots around campus? Study Spot has got you covered. Search for places in the LA area for a unique, new experience. Need a specific type of atmosphere? Filter through Study Spot features to find the perfect <strong>spot</strong> for you!</div>
+  <div style="margin-top:-40px; font-family:Roboto-Light"> Tired of studying in the same old spots around campus? Study Spot has got you covered! Need a specific type of atmosphere? Filter through Study Spot's features to find the perfect <strong>spot</strong> for you!</div>
 <br>
 <br>
 <div style="text-align:center;">
